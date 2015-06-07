@@ -1,0 +1,250 @@
+///////////IMPORTS
+@import "bourbon/bourbon"; // or "bourbon" when in Rails
+@import "base/base";
+@import "neat/neat";
+
+ 
+//variable
+$red: rgb(160,45,52);
+$gold: rgb(255,170,86);
+$gray_dark: rgb(58,58,58);
+$gray_medium: rgb(155,146,138);
+$gray_light: rgb(221,214,207);
+$header_color: rgb(255,255,255);
+$raleway: 'Raleway', sans-serif;
+
+ body { 
+	 text-align: center;
+	 background-color: $gray_light;
+	 color: $gray_dark; 
+	 margin: 0px;
+	 
+	 a { 
+		 color: $gray_dark;
+		 
+		 &:hover {
+			 color: #fff;
+		 }
+	 }
+	 
+	 font-family: 'Quattrocento', serif; font-weight: 500; 
+	 
+	 h1, h2, h4, h4 {  
+		 font-family: 'Raleway', sans-serif;
+		 font-weight: 800; }
+	  
+}
+
+header {
+	min-height: 2em;
+	font-size: 1.2em;
+	background: #fff;
+	@include clearfix;
+	font-family: 'Quattrocento', serif;
+	
+	.site-title {
+		float: left;
+		padding: 1em 1.5em;
+		font-weight: 900;
+		color: $red;
+	}
+	
+	nav {
+		@include clearfix;
+		float: right;
+		
+		ul {
+			
+			@include clearfix;
+			padding: 1em;
+			//border: 1px solid $gray_light;
+			
+			li {
+				float: left;
+				display: inline-block;
+				padding: 0 1em;				
+			}
+			
+			a:hover {
+				color: $gray_dark;
+				border-bottom: 1px solid $red;
+			}
+		}
+		
+	}
+}
+
+.wrap {
+	//@include outer-container(1200px);
+}
+
+.hero {
+	min-height: 20em;
+	margin: 2em auto;
+	padding: 6em 4em;
+	color: $header_color;
+	position: relative;
+	background: url(../images/bg-hero.jpg) center top no-repeat #393939;
+	background-size: cover;
+	
+	@include media($tablet) { padding: 4em; }
+
+	
+	.callout {
+		position: relative;
+		margin: 0 auto;
+		
+		h1 { font-size: 3em; text-transform: capitalize;  }
+		
+		a.button:hover { border-color: $gray_light;} 
+	}
+}
+
+.subhead {
+	color: $gray_dark;
+	font-size: 1.5em;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.blog { 
+	
+	@include clearfix;
+	margin-bottom: 2em;
+	
+	min-height: 26em;
+	color: $gray_dark;
+	
+	article:first-child {
+		@include span-columns(6);
+		height: 30em;
+		background-color: #fff;
+		//background: url(../images/bg-hero.jpg) center top no-repeat;
+		background-size: cover;
+		padding: 2em 1em 2em 2em ;
+		display: table;
+		
+		@include media($tablet) { @include span-columns(8); height: auto; padding: 2em 2em 1em; }
+		
+		h2 { font-size: 2em; line-height: 1.3em; font-weight: 800;  color: $red; }
+		
+		p { margin-bottom: 1.25em; }
+		
+		.container { 
+			height: 90%; 
+			width: 90%; 
+			margin: 0 auto;
+			padding: 1em 2em;
+			display: table-cell; 
+			vertical-align: middle;
+			border: 1px solid $gray_light;
+			background-color: rgba(255,255,255,.8);
+			}
+	}
+	
+	article:nth-child(2), article:nth-child(3) {
+		@include span-columns(6);
+		height: 15em;
+		background-color: #fff;
+		padding: 2em 2em 1em 1em;
+		display: table;
+		
+		@include media($tablet) { @include span-columns(8); height: auto; padding: 1em 2em; }
+		
+		h2 { font-size: 1.4em; line-height: 1.5em; font-weight: 500; }
+		
+		.container { 
+			height: 90%; 
+			width: 90%; 
+			margin: 0 auto;
+			padding: 1em 2em;
+			display: table-cell; 
+			vertical-align: middle;
+			border: 1px solid $gray_light;
+			
+			}		
+	}
+	
+		article:nth-child(3) {
+			background-color: #fff;	
+			padding: 1em 2em 2em 1em;
+	}
+	
+	article { 
+		
+		text-align: left; 
+		
+		.entry { max-width: 600px; margin: 0 auto; }
+	
+	}
+}
+
+.portfolio {
+	
+	color: $gray_medium;
+	
+	.featured-item {
+		min-height: 20em;
+		background-color: #fff;
+		margin-top: 2em;
+		padding: 3em 1em;
+		@include clearfix;
+		
+		&:first-child {
+			margin-top: 0;
+		}
+		
+		.wrap {
+			@include outer-container(1200px);
+		}
+		
+		.featured-image {
+			@include span-columns(5);
+			@include media($tablet) { @include span-columns(8); height: auto; }
+			
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+
+		}
+		
+		.featured-excerpt {
+			@include span-columns(5);
+			@include shift(2);
+			@include media($tablet) { @include span-columns(8); @include shift(0); height: auto; text-align: center; }
+			
+			text-align: left;
+			
+			h3 a { font-family: 'Raleway', sans-serif; color: $gray_dark; font-size: 1.4em; line-height: 1.5em; font-weight: 500; color: $red;
+				
+				&:hover {border-bottom: 1px solid $red; }
+			}
+			p { color: $gray_dark; margin-bottom: 1.2em; }
+		}
+	}
+}
+
+footer  {
+	@include size (100% auto);
+	background-color: $red;
+	color: #fff;
+	margin-top: 2em;
+	padding: 1em;
+	min-height: 2em;
+}
+
+a.button {
+	border: 2px solid $gold;
+	color: $gray_dark;
+	padding: .5em 1.5em;
+	font-size: 80%;
+	background-color: rgba(255,255,255,1);
+	font-family: 'Raleway', sans-serif;
+	
+	&:hover {
+		color: $gray_dark;
+		border-color: $gray_dark;
+	}
+}

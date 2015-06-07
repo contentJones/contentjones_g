@@ -1,0 +1,132 @@
+///////////IMPORTS
+@import "bourbon/bourbon"; // or "bourbon" when in Rails
+@import "base/base";
+@import "neat/neat";
+
+ 
+//variable
+$red: rgb(160,45,52);
+$gold: rgb(255,170,86);
+$gray_dark: rgb(58,58,58);
+$gray_medium: rgb(155,146,138);
+$gray_light: rgb(221,214,207); 
+$header_color: rgb(255,255,255);
+
+
+ body { 
+	 text-align: center;
+	 background-color: $gray_light;
+	 color: #fff; 
+	 margin: 10px;
+	 
+	 a { 
+		 color: #fff;
+		 border-bottom: 1px solid $gray_light;
+		 
+		 &:hover {
+			 color: $gray_light;
+			 border-bottom: 1px solid $gray_medium;
+		 }
+	 }
+}
+
+header {
+	min-height: 2em;
+	padding: 1em;
+	background-color: $red;
+	@include clearfix;
+	
+	.site-title {
+		float: left;
+		border: 1px solid $gray_light;
+		padding: 1em;
+	}
+	
+	nav {
+		@include clearfix;
+		float: right;
+		
+		ul {
+			
+			@include clearfix;
+			padding: 1em;
+			border: 1px solid $gray_light;
+			
+			li {
+				float: left;
+				display: inline-block;
+				padding: 0 1em;				
+			}
+		}
+		
+	}
+}
+
+.hero {
+	min-height: 20em;
+	margin: 3em auto;
+	background-color: $gray_medium;
+	padding: 1em;
+	color: $header_color;
+	
+	
+}
+
+.blog { 
+	
+	@include clearfix;
+	
+	min-height: 20em;
+	color: $header_color;
+	
+	article:first-child {
+		@include span-columns(6);
+		height: 20em;
+		background-color: lighten( $red, 10% );
+		
+		@include media($tablet) { @include span-columns(8); }
+	}
+	
+	article:nth-child(2) {
+		@include span-columns(6);
+		height: 10em;
+		background-color: lighten( $red, 5% );
+		
+		@include media($tablet) { @include span-columns(8); }
+	}
+	
+		article:nth-child(3) {
+		@include span-columns(6);
+		height: 10em;
+		background-color: $red;
+		
+		@include media($tablet) { @include span-columns(8); }
+		
+	}
+	
+	article { 
+		
+		padding: 1em; 
+	
+	}
+}
+
+.portfolio {
+	
+	color: $gray_medium;
+	
+	.featured-item {
+		min-height: 20em;
+		background-color: #fff;
+		margin-top: 3em;
+		padding: 1em;
+	}
+}
+
+footer  {
+	@include size (100% auto);
+	background-color: $red;
+	margin-top: 3em;
+	padding: 1em;
+	min-height: 2em;
+}

@@ -1,0 +1,10 @@
+@import "../neat/neat-helpers"; // or "../neat/neat-helpers" when not in Rails
+
+// Neat Overrides
+$gutter: 0em;
+$grid-columns: 12;
+$max-width: em(1200);
+
+// Define your breakpoints
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 600px 4);

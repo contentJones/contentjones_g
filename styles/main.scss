@@ -1,0 +1,368 @@
+/******** TABLE OF CONTENTS *******
+	
+	stylesheet for content-jones.com by Paul Davidson. 2015.
+	
+	- Global Styles
+	- Off Canvas Widget Area
+	- Header
+	  - site-title
+	  - nav
+	- Subheadings
+	- Portfolio
+	  - featured-item
+	  - featured-excerpt
+	- Blog
+	- Footer
+	
+**********************************/ 
+
+
+
+/******** IMPORTS ********/
+
+	@import "bourbon/bourbon"; // or "bourbon" when in Rails
+	@import "base/base";
+	@import "neat/neat";
+
+
+ 
+/******** VARIABLES ********/ 
+
+	$gold: rgb(255,170,86);
+	$gray_dark: rgb(58,58,58);
+	$gray_medium: rgb(155,146,138);
+	$gray_light: rgb(221,214,207);
+	$header_color: rgb(255,255,255);
+
+
+
+/******** MIXINS ********/ 
+
+	@mixin font-regular { 
+		font-family: 'brandon-grotesque', sans-serif; }
+	
+	@mixin font-bold { 
+		font-family: 'brandon-grotesque', sans-serif;  }
+	
+	@mixin button {
+		border: 2px solid $gold;
+		color: $gray_dark;
+		padding: .4em 1.5em .2em;
+		@include font-regular;
+		font-size: 1em;
+		
+		&:hover {
+			color: $gray_dark;
+			border-color: $gray_dark;
+		}
+}
+
+
+
+/******** GLOBAL STYLES ********/ 
+	
+	body { 
+		@include outer-container;
+		@include font-regular;
+		background-color: #fff;
+		color: $gray_dark;
+		
+		@include media($tablet) { 
+		    padding: 0 20px 20px;
+		}
+		
+		a { 
+		    color: $gray_dark;
+		    border-bottom: 1px solid $gray_light;
+		    
+			&:hover {
+				color: #000;
+				border-color: #000;
+		    }
+		}
+		
+		h1, h2, h4, h4 {  
+			@include font-bold;
+			font-weight: 800; 
+		}	  
+	}
+
+
+
+/******** OFF-CANVAS WIDGET AREA ********/ 
+	
+	#site-wrapper {	
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+	
+		&.show-nav #site-canvas {
+			-webkit-transform: translateX(-270px);
+			transform: translateX(-270px);	
+		}
+	
+	}
+	
+	#site-canvas {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+		-webkit-transition: .3s ease all;
+		transition: .3s ease all;
+	}
+	
+	#off-canvas {
+	 	width: 270px;
+	 	height: 100%;
+	 	position: absolute;
+	 	top: 0;
+	 	right: -270px;
+	 	padding: 15px;
+	 	border-left: 1px solid $gold;
+	}
+
+
+
+/******** HEADER ********/ 
+
+	header.site-header {
+		@include clearfix;
+		margin: 0 0 40px;
+		border-bottom: 1px solid $gold;
+		
+		.site-title {
+			float: left;
+			padding: .5em 0 .5em 4.16667%;
+			font-size: 2em; 
+			font-weight: 900;
+			margin: 0;
+			
+			a { 
+				border-bottom: none; }
+			
+			@include media($tablet) { 
+				padding: .5em 0;  
+				@include span-columns(8);
+				text-align: center;
+			}
+		}
+		
+		nav {
+			
+			ul {		
+				padding: 0 2em 0 0;
+				float: right;
+				margin-bottom: -1px;
+				
+				@include media($tablet) {
+					padding-right: 0;
+				}
+				
+				@include media($tablet) { 
+					@include span-columns(8);
+					text-align: center; 
+					@include clearfix;
+					display: block;
+					margin: 0 auto;
+				}
+				
+				li {
+					float: left;
+					display: inline-block;
+					text-align: center;
+					
+					@include media($tablet) {
+						float: none;
+						} 
+					
+					a { 
+						font-size: 1.5em; 
+						padding: 1.1em .5em; 
+						display: inline-block; 
+						border-bottom-color: transparent;
+						color: $gray_medium;
+						text-transform: uppercase;
+						font-size: 1.2em;
+						font-weight: 900;
+						letter-spacing: 2px;
+						
+						@include media($tablet) { 
+							padding: 1em .3em;
+							font-size: 1.2em;
+							letter-spacing: 0;
+						}
+					}
+					
+					a:hover {
+						color: $gray_dark;
+						border-bottom: 1px solid $gray_dark;
+					}
+				}
+			}
+			
+		} //nav
+	} //header
+
+/******** SUBHEADINGS ********/ 
+
+		.subhead {
+			@include span-columns(12);
+			margin: 40px 0 50px;
+			@include shift(.5);
+			position: relative;
+			color: $gray_medium;
+			font-size: 1.2em;
+			@include font-bold;
+			font-weight: 900;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			
+			@include media($tablet) {
+				@include shift(0);
+			}
+				
+			@include media($mobile) {
+				margin: 20px 0 25px;
+			}
+		}
+
+
+
+/******** PORTFOLIO ********/ 
+
+	.portfolio {
+			
+		.featured-item {
+			@include clearfix;
+			margin-bottom: 40px;		
+					
+			.featured-image {
+				@include span-columns(6.5);
+				@include shift(1);
+	
+				@include media($tablet) { 
+					@include span-columns(6);
+					@include shift(1);
+				}
+				
+				img {
+					max-width: 100%;
+					height: auto;
+				}
+				
+				a {
+					border-bottom: none;
+				}
+			}
+			
+			.featured-excerpt {
+				@include span-columns(3);
+				@include shift(1);
+	
+				@include media($tablet) { 
+					@include span-columns(8); 
+					@include shift(0); 
+				}
+				
+				h3 a { 
+					@include font-regular; 
+					font-size: 1.6em; 
+					line-height: 1.5em; 
+					text-transform: capitalize;
+					
+					&:hover {border-bottom: 1px solid $gray_dark; }
+				}
+				
+				p { 
+					font-size: 1.2em; 
+					margin-bottom: 1.2em; 
+				}
+			}
+		}
+	} //.portfolio
+
+
+
+/******** BLOG ********/ 
+
+.blog { 
+	
+	@include clearfix;
+	
+	article {
+		@include span-columns(10.5);
+		@include shift(1);
+		margin-bottom: 40px;
+		
+		@include media($mobile) {
+			@include span-columns(4);
+			@include shift(0);
+		}
+		
+		.entry-title {
+			@include font-regular;
+			font-size: 1.6em; 
+			line-height: 1.5em; 
+			font-weight: 900;
+			margin-bottom: .25em;
+			
+		}
+		
+		.entry-meta {
+			
+			p { 
+				font-size: .9em;
+				margin-left: 2px;
+				color: $gray_medium;
+				text-transform: lowercase;
+				}
+			
+			a {
+				border: none;
+				color: $gray_medium;
+			}
+		}
+		
+		p { 
+			margin: 0 2em 1.2em 1em;
+			font-size: 1.2em; 
+			
+			@include media($mobile) {
+				margin: 0 0 1.2em 0;
+			}
+		}
+		
+		.button { 
+			display: inline-block; 
+			margin-left: 1em;
+			font-weight: 800; 
+			@include button;
+			
+			@include media($mobile) {
+				margin-left: 0;
+			}
+		
+		 }	
+	} //article
+} //.blog
+
+/******** FOOTER ********/ 
+
+footer  {
+	border-top: 1px solid $gold;
+	
+		p {
+			padding: 1.5em 1em;
+			text-align: right;
+			text-transform: lowercase;
+			
+			@include media($tablet) {
+				text-align: center;
+				padding: 1.5em 0;
+			}
+		}
+}
+
+#mfPreviewBarShow { display: none !important;}
