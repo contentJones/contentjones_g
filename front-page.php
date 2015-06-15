@@ -1,10 +1,7 @@
 <?php
 	
-// REMOVE PAGE TITLE FROM HOMEPAGE
-remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-
-
 //ADD HOMEPAGE CONTENT
+remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'theme_homepage_content');
 function theme_homepage_content() {
 	?>
@@ -85,7 +82,6 @@ function theme_homepage_content() {
 			
 	</section>
 	<?php
-
 }
 	
 	

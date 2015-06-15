@@ -87,7 +87,92 @@
 		}	  
 	}
 
+.site-inner {
+	@include clearfix;
+}
 
+/******** CONTENT ********/ 
+.content, .sidebar {
+	
+	@include clearfix;
+	@include outer-container(); 
+	article {
+		@include span-columns(10.5);
+		@include shift(1);
+		margin-bottom: 40px;
+		
+		@include media($mobile) {
+			@include span-columns(4);
+			@include shift(0); 
+		}
+		
+		.entry-title {
+			@include font-regular;
+			font-size: 1.6em; 
+			line-height: 1.5em; 
+			font-weight: 900;
+			margin-bottom: .25em;
+			
+		}
+		
+		.entry-meta {
+			
+			p { 
+				font-size: .9em;
+				margin-left: 2px;
+				color: $gray_medium;
+				text-transform: lowercase;
+				}
+			
+			a {
+				border: none;
+				color: $gray_medium; 
+			}
+		}
+		
+		p { 
+			margin: 0 2em 1.2em 1em;
+			font-size: 1.2em; 
+			
+			@include media($mobile) {
+				margin: 0 0 1.2em 0;
+			}
+		}
+		
+		.button, input[type="submit"] { 
+			display: inline-block; 
+			margin-left: 1em;
+			font-weight: 800; 
+			@include button;
+			
+			@include media($mobile) {
+				margin-left: 0;
+			}
+		
+		 }	
+	} //article
+	
+	.widget-title {
+			@include font-regular;
+			font-size: 1.6em; 
+			line-height: 1.5em; 
+			font-weight: 900;
+			margin-top: 30px;
+
+	}
+
+	
+}
+
+input[type="submit"], input[type="search"]  {
+	@include button;
+	background: #fff;
+}
+
+input[type="search"] {
+	border-color: black;
+	-webkit-appearance: none; 
+}
 
 /******** OFF-CANVAS WIDGET AREA ********/ 
 	
@@ -281,76 +366,12 @@
 				}
 			}
 		}
-	} //.portfolio
+	} //.portfolio 
 
-
-
-/******** BLOG ********/ 
-
-.blog { 
-	
-	@include clearfix;
-	
-	article {
-		@include span-columns(10.5);
-		@include shift(1);
-		margin-bottom: 40px;
-		
-		@include media($mobile) {
-			@include span-columns(4);
-			@include shift(0);
-		}
-		
-		.entry-title {
-			@include font-regular;
-			font-size: 1.6em; 
-			line-height: 1.5em; 
-			font-weight: 900;
-			margin-bottom: .25em;
-			
-		}
-		
-		.entry-meta {
-			
-			p { 
-				font-size: .9em;
-				margin-left: 2px;
-				color: $gray_medium;
-				text-transform: lowercase;
-				}
-			
-			a {
-				border: none;
-				color: $gray_medium;
-			}
-		}
-		
-		p { 
-			margin: 0 2em 1.2em 1em;
-			font-size: 1.2em; 
-			
-			@include media($mobile) {
-				margin: 0 0 1.2em 0;
-			}
-		}
-		
-		.button { 
-			display: inline-block; 
-			margin-left: 1em;
-			font-weight: 800; 
-			@include button;
-			
-			@include media($mobile) {
-				margin-left: 0;
-			}
-		
-		 }	
-	} //article
-} //.blog
 
 /******** FOOTER ********/ 
 
-footer  {
+footer.site-footer  {
 	border-top: 1px solid $gold;
 	
 		p {
