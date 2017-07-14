@@ -1,6 +1,6 @@
 /******** TABLE OF CONTENTS *******
 	
-	stylesheet for content-jones.com by Paul Davidson. 2015.
+	stylesheet for content-jones.com by Paul Davidson. 2017.
 	
 	- Global Styles
 	- Off Canvas Widget Area
@@ -28,9 +28,11 @@
  
 /******** VARIABLES ********/ 
 
+	$blue_light: rgb(158, 185, 212);
+	$blue_medium: #629EDB;
+	$blue_dark: #263D54;
 	$gold: rgb(255,170,86);
-	$gray_dark: rgb(58,58,58);
-	$gray_medium: rgb(155,146,138);
+	$gray_dark: #43505e;
 	$gray_light: rgb(221,214,207);
 	$header_color: rgb(255,255,255); 
 
@@ -38,11 +40,17 @@
 
 /******** MIXINS ********/ 
 
+/*
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Josefin Slab', serif;
+font-family: 'Open Sans Condensed', sans-serif;
+*/
+
 	@mixin font-regular { 
-		font-family: 'brandon-grotesque', sans-serif; }
+		font-family: 'Lato', sans-serif; font-weight: 400;  }
 	
-	@mixin font-bold { 
-		font-family: 'brandon-grotesque', sans-serif;  }
+	@mixin font-header { 
+		font-family: 'Fredoka One', sans-serif; letter-spacing: 4px; }
 	
 	@mixin button {
 		border: 2px solid $gold;
@@ -52,6 +60,7 @@
 		font-size: 1em;
 		
 		&:hover {
+			background-color: #fff;
 			color: $gray_dark;
 			border-color: $gray_dark;
 		}
@@ -72,23 +81,33 @@
 		}
 		
 		a { 
-		    color: $gray_dark;
-		    border-bottom: 1px solid $gray_light;
+		    color: $blue_dark;
 		    
-			&:hover {
+			&:search
+			 {
 				color: #000;
 				border-color: #000;
 		    }
+		    
+		    &:hover {
+			    color: $gold;
+		    }
 		}
 		
-		h1, h2, h4, h4 {  
-			@include font-bold;
-			font-weight: 800; 
+		h1, h2, h3, h4 {  
+			@include font-header;
+			font-size: 1.6em;
+			margin: 0;
+			margin: 0 0 1em 0;
 		}	  
 	}
 
 .site-inner {
 	@include clearfix;
+}
+
+.bx-wrapper {
+	box-shadow: none !important;
 }
 
 /******** CONTENT ********/ 
@@ -97,7 +116,7 @@
 	@include clearfix;
 	@include outer-container(); 
 	article {
-		@include span-columns(10.5);
+		@include span-columns(11);
 		@include shift(1);
 		margin-bottom: 40px;
 		
@@ -110,39 +129,39 @@
 			@include font-regular;
 			font-size: 1.6em; 
 			line-height: 1.5em; 
-			font-weight: 900;
 			margin-bottom: .25em;
 			
-		}
-		
-		.entry-meta {
+			a { border-bottom: none; }
 			
-			p { 
-				font-size: .9em;
-				margin-left: 2px;
-				color: $gray_medium;
-				text-transform: lowercase;
-				}
 			
-			a {
-				border: none;
-				color: $gray_medium; 
-			}
 		}
 		
 		p { 
-			margin: 0 2em 1.2em 1em;
-			font-size: 1.2em; 
+			margin: 0 0 1.2em 0;
+			font-size: 1.4em; 
+			
+			max-width: 80%;
+			
 			
 			@include media($mobile) {
 				margin: 0 0 1.2em 0;
 			}
 		}
+
+		.entry-meta {
+			font-size: .9em ;
+			margin-left: 2px;
+				
+			
+			a {
+				border: none;
+				color: $blue_light; 
+			}
+		}
 		
 		.button, input[type="submit"] { 
-			display: inline-block; 
-			margin-left: 1em;
-			font-weight: 800; 
+			display: inline-block;
+			margin-left: 1em; 
 			@include button;
 			
 			@include media($mobile) {
@@ -153,26 +172,51 @@
 	} //article
 	
 	.widget-title {
-			@include font-regular;
+			@include font-header;
 			font-size: 1.6em; 
 			line-height: 1.5em; 
-			font-weight: 900;
 			margin-top: 30px;
+			margin-bottom: 10px;
 
 	}
 
+ul {
+			font-size: 1.4em;
+			
+		}
 	
 }
 
 input[type="submit"], input[type="search"]  {
 	@include button;
 	background: #fff;
+	border-width: 1px;
+	color: $blue_light;
+	border-color: $blue_light;
+	visibility: hidden;
+	padding: 0;
+	margin-top: 0;
+	outline: none;
 }
 
 input[type="search"] {
-	border-color: black;
 	-webkit-appearance: none; 
+	border: none;
+	border-bottom: 3px solid $gray_light;
+	text-align: left;
+	-webkit-box-shadow: none;
+	outline: 0 !important;
+	border-radius: 0;
+	padding-left: 5px;
+	visibility: visible;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	letter-spacing: 2px;
+	line-height: 80px;
 }
+
+/* Remove the stupid outer glow in Webkit */
+textarea, input { outline: none; -webkit-appearance: none; }
 
 /******** OFF-CANVAS WIDGET AREA ********/ 
 	
@@ -204,8 +248,8 @@ input[type="search"] {
 	 	position: absolute;
 	 	top: 0;
 	 	right: -270px;
-	 	padding: 15px;
-	 	border-left: 1px solid $gold;
+	 	padding: 0 15px;
+	 	border-left: 3px solid $blue_light;
 	}
 
 
@@ -215,13 +259,13 @@ input[type="search"] {
 	header.site-header {
 		@include clearfix;
 		margin: 0 0 40px;
-		border-bottom: 1px solid $gold;
+		border-bottom: 3px solid $blue_light;
 		
 		.site-title {
+			@include font-header;
 			float: left;
 			padding: .5em 0 .5em 4.16667%;
 			font-size: 2em; 
-			font-weight: 900;
 			margin: 0;
 			
 			a { 
@@ -239,7 +283,7 @@ input[type="search"] {
 			ul {		
 				padding: 0 2em 0 0;
 				float: right;
-				margin-bottom: -1px;
+				margin-bottom: -3px;
 				
 				@include media($tablet) {
 					padding-right: 0;
@@ -263,15 +307,15 @@ input[type="search"] {
 						} 
 					
 					a { 
+						@include font-header;
 						font-size: 1.5em; 
-						padding: 1.1em .5em; 
+						padding: 0 .5em;
+						line-height: 80px;
 						display: inline-block; 
 						border-bottom-color: transparent;
-						color: $gray_medium;
+						color: $blue_light;
 						text-transform: uppercase;
 						font-size: 1.2em;
-						font-weight: 900;
-						letter-spacing: 2px;
 						
 						@include media($tablet) { 
 							padding: 1em .3em;
@@ -282,7 +326,7 @@ input[type="search"] {
 					
 					a:hover {
 						color: $gray_dark;
-						border-bottom: 1px solid $gray_dark;
+						border-bottom: 3px solid $gray_dark;
 					}
 				}
 			}
@@ -297,12 +341,10 @@ input[type="search"] {
 			margin: 40px 0 50px;
 			@include shift(.5);
 			position: relative;
-			color: $gray_medium;
-			font-size: 1.2em;
-			@include font-bold;
-			font-weight: 900;
+			color: $blue_light;
+			font-size: 1.6em;
+			@include font-header;
 			text-transform: uppercase;
-			letter-spacing: 2px;
 			
 			@include media($tablet) {
 				@include shift(0);
@@ -314,18 +356,23 @@ input[type="search"] {
 		}
 
 
+.clearfix {
+	@include clearfix;
+}
 
 /******** PORTFOLIO ********/ 
 
 	.portfolio {
+		@include clearfix;
+		position: relative;
 			
 		.featured-item {
 			@include clearfix;
 			margin-bottom: 40px;		
 					
 			.featured-image {
-				@include span-columns(6.5);
-				@include shift(1);
+				@include span-columns(6);
+				@include shift(.5);
 	
 				@include media($tablet) { 
 					@include span-columns(6);
@@ -343,7 +390,7 @@ input[type="search"] {
 			}
 			
 			.featured-excerpt {
-				@include span-columns(3);
+				@include span-columns(4);
 				@include shift(1);
 	
 				@include media($tablet) { 
@@ -355,9 +402,9 @@ input[type="search"] {
 					@include font-regular; 
 					font-size: 1.6em; 
 					line-height: 1.5em; 
-					text-transform: capitalize;
+					text-transform: lowercase;
 					
-					&:hover {border-bottom: 1px solid $gray_dark; }
+					&:hover {border-bottom: none; }
 				}
 				
 				p { 
@@ -372,7 +419,7 @@ input[type="search"] {
 /******** FOOTER ********/ 
 
 footer.site-footer  {
-	border-top: 1px solid $gold;
+	border-top: 1px solid $blue_light;
 	
 		p {
 			padding: 1.5em 1em;
@@ -387,3 +434,188 @@ footer.site-footer  {
 }
 
 #mfPreviewBarShow { display: none !important;}
+
+/*Super Form Reset
+
+A couple of things to watch out for:
+
+- IE8: If a text input doesn't have padding on all sides or none the text won't be centered.
+- The default border sizes on text inputs in all UAs seem to be slightly different. You're better off using custom borders.
+- You NEED to set the font-size and family on all form elements
+- Search inputs need to have their appearance reset and the box-sizing set to content-box to match other UAs
+- You can style the upload button in webkit using ::-webkit-file-upload-button
+- ::-webkit-file-upload-button selectors can't be used in the same selector as normal ones. FF and IE freak out.
+- IE: You don't need to fake inline-block with labels and form controls in IE. They function as inline-block.
+- By turning off ::-webkit-search-decoration, it removes the extra whitespace on the left on search inputs
+
+----------------------------------------------------------------------------------------------------*/
+
+input,
+label,
+select,
+button,
+textarea
+{
+	margin:0;
+	border:0;
+	padding:0;
+	display:inline-block;
+	vertical-align:middle;
+	white-space:normal;
+	background:none;
+	line-height:1;
+	}
+
+/* Remove the stupid outer glow in Webkit */
+input:focus, .ui-state-focus
+{
+	outline:0 !important;
+}
+
+*:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+/* Box Sizing Reset
+-----------------------------------------------*/
+
+/* All of our custom controls should be what we expect them to be */
+input,
+textarea
+{
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+}
+
+/* These elements are usually rendered a certain way by the browser */
+button,
+input[type=reset],
+input[type=button],
+input[type=submit],
+input[type=checkbox],
+input[type=radio],
+select
+{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+/* Text Inputs
+-----------------------------------------------*/
+
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week]
+{
+}
+
+/* Button Controls
+-----------------------------------------------*/
+
+input[type=checkbox],
+input[type=radio]
+{
+	width:13px;
+	height:13px;
+}
+
+/* File Uploads
+-----------------------------------------------*/
+
+input[type=file]
+{
+
+}
+
+/* Search Input
+-----------------------------------------------*/
+
+/* Make webkit render the search input like a normal text field */
+input[type=search]
+{
+	-webkit-appearance:textfield;
+	-webkit-box-sizing:content-box;
+}
+
+/* Turn off the recent search for webkit. It adds about 15px padding on the left */
+::-webkit-search-decoration
+{
+	display:none;
+}
+
+/* Buttons
+-----------------------------------------------*/
+
+button,
+input[type="reset"],
+input[type="button"],
+input[type="submit"]
+{
+	/* Fix IE7 display bug */
+	overflow:visible;
+	width:auto;
+}
+
+/* IE8 and FF freak out if this rule is within another selector */
+::-webkit-file-upload-button
+{	
+	padding:0;
+	border:0;
+	background:none;
+}
+
+/* Textarea
+-----------------------------------------------*/
+
+textarea 
+{
+	/* Move the label to the top */
+	vertical-align:top;
+	
+	/* Turn off scroll bars in IE unless needed */
+	overflow:auto;
+}
+
+/* Selects
+-----------------------------------------------*/
+
+select
+{
+	 -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     outline: 0;
+     
+     &::focus {
+	     outline: 0;
+     }
+}
+
+
+select[multiple] 
+{
+	/* Move the label to the top */
+	vertical-align:top;
+}
+
+
+::-ms-expand {
+	
+	/* Remove dropdown arrow */
+	display: none;
+}
+
